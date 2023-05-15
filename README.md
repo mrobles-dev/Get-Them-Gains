@@ -9,7 +9,7 @@ Provide a short description explaining the what, why, and how of your project. U
 - What problem does it solve?
 - What did you learn?
 
-## Table of Contents (Optional)
+## Table of Contents
 
 If your README is long, add a table of contents to make it easy for users to find what they need.
 
@@ -24,13 +24,14 @@ What are the steps required to install your project? Provide a step-by-step desc
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Here is our initial wireframe for our login, registration, and logged in pages:
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+![Wireframe](assets/wireframe.jpg)
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+We will add additional screenshots here once they are ready.
+
+Provide instructions and examples for use.
+
 
 ## Credits
 
@@ -69,7 +70,14 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 6. I found an article on w3schools that showed me how to create a progress bar.  Here is the link to the article: https://www.w3schools.com/howto/howto_js_progressbar.asp
 
-7. 
+7. I learned how to create a favicon using javascript from spemer.com.  Here is a link to the article: https://spemer.com/articles/set-favicon-with-javascript.html 
+
+8. Stack Overflow article led me to the documentation to figure out how to use operators (Kevin): https://stackoverflow.com/questions/43115151/sequelize-query-to-find-all-records-that-falls-in-between-date-range 
+
+9. Sequelize Operators Documentation to figure out how to find the data in a date range using Op.between (Kevin): https://sequelize.org/docs/v6/core-concepts/model-querying-basics/ 
+
+10. This documentation on moment.js helped with the correct method of subtracting(Kevin): https://momentjs.com/guides/#/warnings/js-date/
+
 
 ## License
 
