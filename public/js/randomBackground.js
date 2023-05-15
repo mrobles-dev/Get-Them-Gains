@@ -4,11 +4,11 @@
 //randomBackgroundImage() is being called when the page loads
 
 const images = [
-  '../assets/fitness1.jpg',
-  '../assets/fitness2.jpg',
-  '../assets/fitness3.jpg',
-  '../assets/fitness4.jpg',
-  '../assets/fitness5.jpg'
+  '../assets/fit1.jpg',
+  '../assets/fit2.jpg',
+  '../assets/fit3.jpg',
+  '../assets/fit4.jpg',
+  '../assets/fit5.jpg'
 ];
 
 function randomBackgroundImage() {
