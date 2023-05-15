@@ -44,6 +44,7 @@ jspm_packages/
 node_modules
 .env
 .DS_Store
+package.json/
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
