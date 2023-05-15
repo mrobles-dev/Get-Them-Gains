@@ -45,5 +45,20 @@ router.get('/sleep/:id', withAuth, async (req, res) => {
 });
 
 
+// Delete a sleep record from the database
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const sleepData = await Sleep.findByPk(req.params.id);
+    if (!sleepData) {
+      res.status(404).json({ message: 'No sleep data found with this id!' });
+      return;
+    }
+    await sleepData.destroy();
+    res.status(200).json({ message: 'Sleep data deleted successfully!' });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
