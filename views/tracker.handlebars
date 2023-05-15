@@ -1,28 +1,27 @@
-{{!-- <!-- Handlebars START --> --}}
+<!-- Handlebars START -->
 <div class="container mb-3">
   <div class="logged-in-div mt-3">
 
-    {{!-- <!-- Navbar Start --> --}}
+    <!-- Navbar Start -->
     <div class="bg-dark text-white fs-4 rounded-3" style="padding:10px;" id="insideNav">
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <div id="welcome"><b>Welcome</div>
         <div>
-          <a href="/tracker" style="text-decoration:none; padding: 0 10px 0 10px;">Tracker</a>
+          <a href="/tracker" style="text-decoration:none; padding: 0 10px 0 10px;" onclick="goalNavHandler()">Tracker</a>
           <a href="/workouts" style="text-decoration:none; padding: 0 10px 0 10px;">Workouts</a>
           <a href="/goals" style="text-decoration:none; padding: 0 10px 0 10px;">Goals</a>
-          <a href="/profile" style="text-decoration:none; padding: 0 10px 0 10px;">Update Bio</a>
-          <a href="#" style="text-decoration:none; padding: 0 10px 0 10px;">Log Out</a>
+          <a href="#" style="text-decoration:none; padding: 0 10px 0 10px;" onclick="logout(event)">logout</a>
         </div>
       </div>
     </div>
-    {{!-- <!-- Navbar End --> --}}
+    <!-- Navbar End -->
 
-    {{!-- <!-- Headings Start --> --}}
+    <!-- Headings Start -->
     <h1 style="text-align: center;"><b>Fitness Tracker</b></h1>
     <h3 style="text-align: center;">Visualize your progress to reach your goals!</h3>
-    {{!-- <!-- Headings End --> --}}
+    <!-- Headings End -->
 
-    {{!-- <!-- Main Body Start --> --}}
+    <!-- Main Body Start -->
     
     <div class="row">
       <ul>
@@ -32,11 +31,11 @@
       </ul>
     </div>
 
-    {{!-- <!-- Progress Bar Sample --> --}}
+    <!-- Progress Bar Sample -->
     <div class="row">
       <h5>Weight Loss Goal:</h5>
       
-    {{!-- graphs --}}
+    <!-- graphs -->
 
 
       <div id="hideProgress" class="hidden">
@@ -45,8 +44,8 @@
         </div>
       </div>
     </div>
-    {{!-- <!-- Main Body End --> --}}
+    <!-- Main Body End -->
 
   </div>
 </div>
-{{!-- <!-- Handlebars END --> --}}
+<!-- Handlebars END -->
