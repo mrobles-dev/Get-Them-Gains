@@ -23,16 +23,22 @@
     {{!-- <!-- Headings End --> --}}
 
     {{!-- <!-- Main Body Start --> --}}
+    
     <div class="row">
-      <p>This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.
-        Blah Blah Blah. Blah Blah Blah. Blah Blah Blah. Blah Blah Blah. Blah Blah Blah. Blah Blah Blah. Blah Blah Blah.
-        Blah Blah Blah. Blah Blah Blah. Blah Blah Blah. Blah Blah Blah.
-        <br><br>
-      </p>
+      <ul>
+      <li> {{water.ounces}} </li>
+      <li> {{sleep.hours}} </li>
+      <li> {{Weight.currentWeight}} </li>
+      </ul>
     </div>
+
     {{!-- <!-- Progress Bar Sample --> --}}
     <div class="row">
       <h5>Weight Loss Goal:</h5>
+      
+    {{!-- graphs --}}
+
+
       <div id="hideProgress" class="hidden">
         <div id="myProgress" class="progress-container">
           <div id="myBar">0%</div>
