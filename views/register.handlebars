@@ -1,0 +1,32 @@
+{{!-- <!-- Handlebars START --> --}}
+{{!-- <!-- Registration Card Start --> --}}
+<div class="login-card">
+  <h1 style="text-align: center;"><b>Registration</b></h1>
+  <p style="font-size: 1.3rem;"><b>Already a member?</b> <a href="/"><b>Sign In</b></a></p>
+  <form class="signup-form">
+    <div class="form-group">
+      <label for="name"><b>Name:</b></label>
+      <input type="text" class="form-control" id="name" placeholder="Enter Name">
+    </div>
+    <div class="form-group">
+      <label for="email"><b>Email address:</b></label>
+      <input type="email" class="form-control" id="email" placeholder="Enter Email">
+    </div>
+    <div class="form-group">
+      <label for="password"><b>Password:</b></label>
+      <input type="password" class="form-control" id="password" placeholder="Enter Password">
+    </div>
+    <div class="form-group">
+      <label for="currentWeight"><b>Current Weight:</b></label>
+      <input type="number" class="form-control" id="currentWeight" min="0" placeholder="Enter Current Weight">
+    </div>
+    <div class="form-group">
+      <label for="goalWeight"><b>Goal Weight:</b></label>
+      <input type="number" class="form-control" id="goalWeight" min="0" placeholder="Enter Goal Weight">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block w-100">Submit</button>
+  </form>
+</div>
+{{!-- <!-- Registration Card End --> --}}
+<script src="/public/js/signup.js"></script>
+{{!-- <!-- Handlebars END --> --}}

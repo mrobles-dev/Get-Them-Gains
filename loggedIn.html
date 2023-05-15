@@ -21,6 +21,14 @@
     rel="stylesheet">
   
   <!-- Random Background Image Script Start -->
+    <!-- Preload Background Images -->
+    <link rel="preload" as="image" href="assets/fitness1.jpg">
+    <link rel="preload" as="image" href="assets/fitness2.jpg">
+    <link rel="preload" as="image" href="assets/fitness3.jpg">
+    <link rel="preload" as="image" href="assets/fitness4.jpg">
+    <link rel="preload" as="image" href="assets/fitness5.jpg">
+    <link rel="preload" as="image" href="assets/fitness6.jpg">
+
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   
   <script src="public/js/randomBackground.js"></script>
@@ -30,9 +38,13 @@
     });
   </script>
   <!-- Random Background Image Script End -->
+
 </head>
 
-<body>
+<div>
+<div class="container"></div>
+
+  <!-- Handlebars START -->
   <div class="container mb-3">
     <div class="logged-in-div mt-3">
 
@@ -52,7 +64,7 @@
 
       <!-- Headings Start -->
       <h1 style="text-align: center;"><b>Fitness Tracker</b></h1>
-      <h3 style="text-align: center;">Thank you for logging in</h3>
+      <h3 style="text-align: center;">Visualize your progress to reach your goals!</h3>
       <!-- Headings End -->
 
       <!-- Main Body Start -->
@@ -76,6 +88,10 @@
 
     </div>
   </div>
+  <!-- Handlebars END -->
+
+
+</div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
