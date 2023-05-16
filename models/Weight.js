@@ -16,9 +16,16 @@ Weight.init({
           key: 'id',
         },
       },
-
-    startWeight:{
-        type: DataTypes.INTEGER,
+    // startWeight:{
+    //     type: DataTypes.INTEGER,
+    //     references: {
+    //       model: 'user',
+    //       key: 'startingWeight',
+    //     },
+    // },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
     },
     weightGoal:{
         type: DataTypes.INTEGER,
@@ -28,6 +35,6 @@ Weight.init({
     }
 },
 { sequelize,
-    modelName:'Weight'}
+    modelName:'weight'}
 );
 module.exports = Weight;

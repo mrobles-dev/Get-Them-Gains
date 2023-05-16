@@ -35,6 +35,10 @@ User.init(
         len: [6],
       },
     },
+    startingWeight: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     hooks: {
