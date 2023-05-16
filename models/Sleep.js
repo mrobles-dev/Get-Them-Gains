@@ -25,7 +25,7 @@ Sleep.init(
     hours: {
       type: DataTypes.INTEGER,
       allowNull: false
-    }
+    },
   },
   {
     sequelize,
