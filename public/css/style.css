@@ -157,6 +157,10 @@ button {
   background-color: #04AA6D;
 }
 
+#note-textarea{
+  display: grid;
+}
+
 /* Progress Bar End */
 
 
