@@ -34,10 +34,6 @@
     <!-- Progress Bar Sample -->
     <div class="row">
       <h5>Weight Loss Goal:</h5>
-      
-    <!-- graphs -->
-
-
       <div id="hideProgress" class="hidden">
         <div id="myProgress" class="progress-container">
           <div id="myBar">0%</div>
@@ -46,6 +42,100 @@
     </div>
     <!-- Main Body End -->
 
+    <!--  Chart JS Test -->
+<h5 class="pt-5">Sleep Tracker:</h5>
+  <!--  Chart JS CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.js"
+  integrity="sha512-CMF3tQtjOoOJoOKlsS7/2loJlkyctwzSoDK/S40iAB+MqWSaf50uObGQSk5Ny/gfRhRCjNLvoxuCvdnERU4WGg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/js/chart.js"></script>
+<div class="chart">
+  <canvas id="myChart1" style="width: 100%;"></canvas>
+    </div>
+
   </div>
 </div>
+
+<script>
+  // "Source Beautiful Chart Animation with Chart.js Tutorial" - https://www.youtube.com/watch?v=fqARSwfsV9w
+
+  let delayed;
+  const labels = ['2023-5-09', '2023-5-10', '2023-5-11', '2023-5-12', '2023-5-13', '2023-5-14', '2023-5-15'];
+  const data = {
+    labels: labels,
+    datasets: [{
+      data: [7, 6, 7.5, 5, 6, 4, 8],
+      label: 'Hours of Sleep',
+      fill: true,
+      backgroundColor: 'rgba(38,125,206,0.4)',
+      borderColor: 'rgba(14,16,31,1)',
+      borderWidth: 2,
+      pointBackgroundColor: 'rgba(4,170,109,.8)',
+      pointBorderColor: 'rgba(0,0,0,1)',
+      pointHoverBackgroundColor: 'rgba(4,170,109,.8)',
+      pointHoverBorderColor: 'rgba(14,16,31,1)',
+      tension: 0.4,
+    }]
+  };
+
+ const config = {
+    type: 'line',
+    data: data,
+    options: {
+      radius: 3,
+      hitRadius: 20,
+      hoverRadius: 12,
+      responsive: true,
+      animation: {
+        onComplete: () => {
+          delayed = true;
+        },
+        delay: (context) => {
+          let delay = 0;
+          if (context.type === "data" && context.mode === "default" && !delayed) {
+            delay = context.dataIndex * 500 + context.datasetIndex * 200;
+          }
+          return delay;
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: function (value) {
+              return value + 'hrs';
+            },
+            color: 'black',
+          },
+          suggestedMax: Math.max(...data.datasets[0].data) + 1, // Add 1 to the highest data point
+        },
+        x: {
+          ticks: {
+            color: 'black',
+          },
+        },
+      },
+
+      plugins: {
+        legend: {
+          labels: {
+            color: 'black',
+          },
+        },
+      },
+    },
+  };
+
+
+
+  // Get the canvas element
+    const canvas = document.getElementById('myChart1');
+    // Get the parent element's width
+    const parentWidth = canvas.parentElement.clientWidth;
+    // Set the canvas width to match the parent width
+    canvas.width = parentWidth;
+
+    const chart = new Chart(canvas, config);
+</script>
+
 <!-- Handlebars END -->

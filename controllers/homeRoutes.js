@@ -36,6 +36,14 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+router.get("/homepage", (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect("/tracker");
+    return;
+  }
+  res.render("login");
+});
 
 router.get("/goals", withAuth, async (req, res) => {
 
