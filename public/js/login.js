@@ -6,7 +6,7 @@ const loginFormHandler = async (event) => {
   const password = document.querySelector('#password').value.trim();
 
   if (email && password) {
-    console.log('test');
+    console.log('Attempting Login');
     // Send a POST request to the API endpoint
     const response = await fetch('/api/users/login', {
       method: 'POST',
@@ -19,6 +19,7 @@ const loginFormHandler = async (event) => {
       document.location.replace('/tracker');
     } else {
       alert(response.statusText);
+      console.log('Login Failed: ' + response.statusText);
     
     }
   }
