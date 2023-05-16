@@ -22,15 +22,26 @@
     {{!-- <!-- Headings End --> --}}
 
     {{!-- <!-- Main Body Start --> --}}
-    <div class="row">
-      <p>This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.
-        Blah Blah Blah. Blah Blah Blah. Blah Blah Blah. Blah Blah Blah. Blah Blah Blah. Blah Blah Blah. Blah Blah Blah.
-        Blah Blah Blah. Blah Blah Blah. Blah Blah Blah. Blah Blah Blah.
-        <br><br>
-      </p>
-    </div>
+
+    
+
+
+
+        <div class="row">
+          <div class="col-4 list-container">
+            <div class="card">
+              <ul class="list-group"></ul>
+            </div>
+          </div>
+          <div class="col-8">
+            <input class="note-title" placeholder="Note Title" maxlength="28" type="text" />
+            <textarea class="note-textarea" placeholder="Note Text"></textarea>
+          </div>
+        </div>
+      </div>
     {{!-- <!-- Main Body End --> --}}
 
   </div>
 </div>
+<script src="../public/js/w-o-notes.js"> </script>
 {{!-- <!-- Handlebars END --> --}}
