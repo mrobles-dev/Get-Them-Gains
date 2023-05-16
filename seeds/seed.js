@@ -14,8 +14,8 @@ const seedDatabase = async () => {
 
   for (const sleep of sleepData) {
     await Sleep.create({
-      ...sleep,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
+      ...sleep
+      // user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
 

@@ -10,7 +10,7 @@ Sleep.init(
       primaryKey: true,
       autoIncrement: true
     },
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
       // allowNull: false,
       references: {
@@ -23,7 +23,7 @@ Sleep.init(
       allowNull: false
     },
     hours: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL,
       allowNull: false
     },
   },
