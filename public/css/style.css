@@ -142,17 +142,17 @@ button {
 }
 
 #myProgress {
-  width: 100%;
+  width: 97%;
   /* background-color: transparent; */
-  background-color: rgba(10, 75, 150, 0.45);
+  background-color: rgba(38,125,206,0.4);
 }
 
 #myBar {
   width: 05%;
-  height: 30px;
+  height: 40px;
   border-radius: 20px;
   text-align: center;
-  line-height: 30px;
+  line-height: 37px;
   color: white;
   background-color: #04AA6D;
 }
@@ -177,3 +177,18 @@ button {
   display: none;
 }
 }
+
+/* Chart Start */
+
+.chart {
+  position: relative;
+  width:100%;
+}
+
+.chart-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+/* Chart End */

@@ -78,6 +78,8 @@ Provide instructions and examples for use.
 
 10. This documentation on moment.js helped with the correct method of subtracting(Kevin): https://momentjs.com/guides/#/warnings/js-date/
 
+11. The video "Beautiful Chart Animation with Chart.js Tutorial" helped me with understanding how to animate chart.js: https://www.youtube.com/watch?v=fqARSwfsV9w
+
 
 ## License
 
