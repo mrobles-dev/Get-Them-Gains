@@ -11,8 +11,6 @@ Provide a short description explaining the what, why, and how of your project. U
 
 ## Table of Contents
 
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
@@ -37,11 +35,11 @@ Provide instructions and examples for use.
 
 1. Lodash Node Module Package Sources (Kevin):
 
-    documentation: https://www.npmjs.com/package/lodash
+    1. Documentation: https://www.npmjs.com/package/lodash
 
-    Random Documentation: https://github.com/lodash/lodash/blob/4.17.21-npm/random.js 
+    2. 'Random' Documentation: https://github.com/lodash/lodash/blob/4.17.21-npm/random.js 
 
-    CDN Documentation: https://www.jsdelivr.com/package/npm/lodash 
+    3. CDN Documentation: https://www.jsdelivr.com/package/npm/lodash 
 
 
 2. I used the mdn web docs page "Document: DOMContentLoaded event" to figure out how to get my javascript to run every time the page loads (Kevin).  Here is a link to the article: https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event 
@@ -80,29 +78,17 @@ Provide instructions and examples for use.
 
 11. The video "Beautiful Chart Animation with Chart.js Tutorial" helped me with understanding how to animate chart.js: https://www.youtube.com/watch?v=fqARSwfsV9w
 
+12. We are using the Chart.js library for our Sleep and Water visuals.  Here is a link to the documentation: https://www.chartjs.org/docs/latest/getting-started/installation.html 
+
+
 
 ## License
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+MIT License
 
----
+Please refer to the LICENSE file in the repository for more information.
 
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
 
 ## Features
 
 If your project has a lot of features, list them here.
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
