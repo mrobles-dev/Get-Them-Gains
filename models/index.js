@@ -3,6 +3,7 @@ const User = require('./User');
 const Sleep = require('./Sleep');
 const Weight= require('./Weight');
 const Water= require('./Water');
+const Workouts= require('./Workouts');
 
 User.hasMany(Sleep, {
   foreignKey: 'user_id',
@@ -30,6 +31,13 @@ Water.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
+User.hasMany(Workouts, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+Workouts.belongsTo(User, {
+  foreignKey: 'user_id'
+});
 
 
 
@@ -37,6 +45,5 @@ Water.belongsTo(User, {
 
 
 
-module.exports = { User, Sleep };
-module.exports = { User, Weight };
-module.exports = { User, Water };
+
+module.exports = {User, Workouts, Sleep, Weight, Water};
