@@ -6,6 +6,9 @@ let noteList;
 
 console.log("ding")
 
+
+
+
 if (window.location.pathname === "/workouts") {
   noteTitle = document.querySelector(".note-title");
   noteText = document.querySelector(".note-textarea");
@@ -16,57 +19,14 @@ if (window.location.pathname === "/workouts") {
 
 // Show an element
 const show = (elem) => {
-  elem.style.display = "inline";
+  elem.style.display = "block";
 };
 
-// Hide an element
-const hide = (elem) => {
-  elem.style.display = "none";
-};
 
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-const getNotes = () =>
-  fetch("/workouts", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
 
-const saveNote = (note) =>
-  fetch("/workouts", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(note),
-  });
-
-const deleteNote = (id) =>
-  fetch(`/workouts/${id}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-const renderActiveNote = () => {
-  hide(saveNoteBtn);
-
-  if (activeNote.id) {
-    noteTitle.setAttribute("readonly", true);
-    noteText.setAttribute("readonly", true);
-    noteTitle.value = activeNote.title;
-    noteText.value = activeNote.text;
-  } else {
-    noteTitle.removeAttribute("readonly");
-    noteText.removeAttribute("readonly");
-    noteTitle.value = "";
-    noteText.value = "";
-  }
-};
 
 const handleNoteSave = () => {
   const newNote = {
@@ -79,23 +39,7 @@ const handleNoteSave = () => {
   });
 };
 
-// Delete the clicked note
-const handleNoteDelete = (e) => {
-  // Prevents the click listener for the list from being called when the button inside of it is clicked
-  e.stopPropagation();
 
-  const note = e.target;
-  const noteId = JSON.parse(note.parentElement.getAttribute("data-note")).id;
-
-  if (activeNote.id === noteId) {
-    activeNote = {};
-  }
-
-  deleteNote(noteId).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
-};
 
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
@@ -110,18 +54,10 @@ const handleNewNoteView = (e) => {
   renderActiveNote();
 };
 
-const handleRenderSaveBtn = () => {
-  if (!noteTitle.value.trim() || !noteText.value.trim()) {
-    hide(saveNoteBtn);
-  } else {
-    show(saveNoteBtn);
-  }
-};
-
 // Render the list of note titles
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
-  if (window.location.pathname === "/notes") {
+  if (window.location.pathname === "/workouts") {
     noteList.forEach((el) => (el.innerHTML = ""));
   }
 
@@ -139,20 +75,6 @@ const renderNoteList = async (notes) => {
 
     liEl.append(spanEl);
 
-    if (delBtn) {
-      const delBtnEl = document.createElement("i");
-      delBtnEl.classList.add(
-        "fas",
-        "fa-trash-alt",
-        "float-right",
-        "text-danger",
-        "delete-note"
-      );
-      delBtnEl.addEventListener("click", handleNoteDelete);
-
-      liEl.append(delBtnEl);
-    }
-
     return liEl;
   };
 
@@ -167,7 +89,7 @@ const renderNoteList = async (notes) => {
     noteListItems.push(li);
   });
 
-  if (window.location.pathname === "/notes") {
+  if (window.location.pathname === "/workouts") {
     noteListItems.forEach((note) => noteList[0].append(note));
   }
 };
@@ -175,11 +97,9 @@ const renderNoteList = async (notes) => {
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
-if (window.location.pathname === "/notes") {
-  saveNoteBtn.addEventListener("click", handleNoteSave);
-  newNoteBtn.addEventListener("click", handleNewNoteView);
-  noteTitle.addEventListener("keyup", handleRenderSaveBtn);
-  noteText.addEventListener("keyup", handleRenderSaveBtn);
+if (window.location.pathname === "/workouts") {
+  saveNoteBtn.addEventListener("click");
+  newNoteBtn.addEventListener("click" );
 }
 
-getAndRenderNotes();
+getAndRenderNotes()

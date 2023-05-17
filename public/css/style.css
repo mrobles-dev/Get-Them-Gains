@@ -94,6 +94,8 @@ button {
   margin-right: 15px;
   font-size: 1.5rem;
   cursor: pointer;
+  background-color: red;
+  border-radius: 35px;
 }
 
 .logged-in-div {
