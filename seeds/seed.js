@@ -1,7 +1,7 @@
 const sequelize = require('../config/connection');
 const { User, Sleep } = require('../models');
-const { User, Weight } = require('../models')
-const { User, water } = require('../models')
+const { Weight } = require('../models')
+const { Water } = require('../models')
 
 const userData = require('./userData.json');
 const sleepData = require('./sleepData.json');
