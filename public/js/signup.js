@@ -17,7 +17,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      // If successful, take the user to the goals page
+      // If successful, take the user to goals page
       document.location.replace('/goals');   //TODO Will we use profile?
     } else {
       // If the request fails, display the error message

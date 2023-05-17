@@ -31,6 +31,7 @@ Water.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
+
 User.hasMany(Workouts, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
@@ -38,12 +39,6 @@ User.hasMany(Workouts, {
 Workouts.belongsTo(User, {
   foreignKey: 'user_id'
 });
-
-
-
-
-
-
 
 
 module.exports = {User, Workouts, Sleep, Weight, Water};
