@@ -16,13 +16,13 @@ Weight.init({
       key: 'id',
     },
   },
-  startWeight: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: 'user',
-      key: 'startingWeight',
-    },
-  },
+//   startWeight: {
+//     type: DataTypes.INTEGER,
+//     references: {
+//       model: 'user',
+//       key: 'startingWeight',
+//     },
+//   },
   date: {
     type: DataTypes.DATEONLY,
     allowNull: false
