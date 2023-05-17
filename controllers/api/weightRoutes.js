@@ -2,9 +2,6 @@ const router = require('express').Router();
 const { Weight } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-const moment = require('moment');
-const { Op } = require('sequelize');
-
 router.post('/', withAuth, async (req, res) => {
     try {
       const newWeight = await Weight.create({

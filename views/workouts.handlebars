@@ -24,13 +24,14 @@
     {{!-- <!-- Main Body Start --> --}}
 
 
-
+        {{#each workouts as |workout|}}
         <div class="row">
           <div class="col-4 list-container">
             <div class="card">
-              <ul class="list-group"> list appears here</ul>
+              <ul class="list-group"> {{workout.text}} </ul>
             </div>
           </div>
+          {{/each}}
           <div class="col-8">
             <input class="note-title" placeholder="Note Title" maxlength="28" type="text" />
             <textarea style="display:grid;" class="note-textarea" placeholder="Note Text"></textarea>

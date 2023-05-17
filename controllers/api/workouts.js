@@ -5,7 +5,7 @@ const withAuth= require('../../utils/auth')
 
 
 
-router.post("/workouts", withAuth, async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const newWorkout = await Workouts.create({
       ...req.body,
@@ -18,9 +18,9 @@ router.post("/workouts", withAuth, async (req, res) => {
   }
 });
 
-router.get("/workouts", withAuth, async (req, res) => {
+router.get("/workouts/:id", withAuth, async (req, res) => {
   try {
-    // const workoutId = req.session.user_id;
+    const workoutId = req.session.user_id;
     const workoutData = await Workouts.findAll({
       where: {
         user_id: userId,
