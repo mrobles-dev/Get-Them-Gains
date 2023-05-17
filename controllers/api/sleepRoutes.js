@@ -27,7 +27,7 @@ router.post('/', withAuth, async (req, res) => {
 router.get('/sleepData/:id', withAuth, async (req, res) => {
   const userId = req.params.id;
   const pastWeek = moment().subtract(7, 'days').toDate();
-
+  
   try {
     const sleepData = await Sleep.findAll({
       where: {
