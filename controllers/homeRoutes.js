@@ -21,11 +21,12 @@ router.get('/register', (req, res) => {
 
 
 router.get("/tracker", withAuth, async (req, res) => {
-
-    res.render("tracker", {
-      logged_in: true,
-    });
+  res.render("tracker", {
+    logged_in: true,
+    userId: req.session.user_id
+  });
 });
+
 
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route

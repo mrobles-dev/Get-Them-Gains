@@ -76,9 +76,13 @@ Provide instructions and examples for use.
 
 10. This documentation on moment.js helped with the correct method of subtracting(Kevin): https://momentjs.com/guides/#/warnings/js-date/
 
-11. The video "Beautiful Chart Animation with Chart.js Tutorial" helped me with understanding how to animate chart.js: https://www.youtube.com/watch?v=fqARSwfsV9w
+11. The video "Beautiful Chart Animation with Chart.js Tutorial" helped me with understanding how to animate chart.js (Kevin): https://www.youtube.com/watch?v=fqARSwfsV9w
 
-12. We are using the Chart.js library for our Sleep and Water visuals.  Here is a link to the documentation: https://www.chartjs.org/docs/latest/getting-started/installation.html 
+12. We are using the Chart.js library for our Sleep and Water visuals.  Here is a link to the documentation (Kevin): https://www.chartjs.org/docs/latest/getting-started/installation.html 
+
+13. Sequelize Operator Docs used (Kevin): https://sequelize.org/docs/v6/core-concepts/model-querying-basics/ 
+
+14. I found an article called "Sequelize Where Statement with date" on Stack Overflow and the answer from user "Evan Siroky" gave me the idea of using the gte operator and moment.js to get 7 days of data for the chart display.  Here is a link to the page (Kevin): https://stackoverflow.com/questions/29798357/sequelize-where-statement-with-date
 
 
 
