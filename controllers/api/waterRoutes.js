@@ -2,8 +2,9 @@ const router = require('express').Router();
 const { Water } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// const moment = require('moment');
-// const { Op } = require('sequelize');
+//! Required for Tracker Display
+const moment = require('moment');
+const { Op } = require('sequelize');
 
 
 // Add water intake to the database
@@ -23,24 +24,25 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-// Find water data to display in the tracker
-router.get('/', withAuth, async (req, res) => {
+// Find sleep data to display in the tracker
+router.get('/waterData/:id', withAuth, async (req, res) => {
+  const userId = req.params.id;
+  const pastWeek = moment().subtract(7, 'days').toDate();
+
   try {
-    const userId = req.session.user_id;
-    const today = moment().format('YYYY-MM-DD');
-    const waterIntakeData = await Water.findAll({
+    const waterData = await Water.findAll({
       where: {
         user_id: userId,
-        date: today
-        // date: {
-        //   [Op.between]: [startDate, endDate]
-        // }
-      }
+        date: { [Op.gte]: pastWeek },
+      },
+      attributes: ['date', 'ounces'],
+      order: [['date', 'ASC']],
     });
 
-    res.status(200).json(waterIntakeData);
-  } catch (err) {
-    res.status(400).json(err);
+    res.json(waterData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred sending water data' });
   }
 });
 
