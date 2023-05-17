@@ -20,7 +20,7 @@ Workouts.init(
       },
     },
     title: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     text: {
