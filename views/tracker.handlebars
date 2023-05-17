@@ -62,9 +62,9 @@
   </div>
 </div>
 
-{{!-- "Source Beautiful Chart Animation with Chart.js Tutorial" - https://www.youtube.com/watch?v=fqARSwfsV9w --}}
   
 <script>
+// "Source Beautiful Chart Animation with Chart.js Tutorial" - https://www.youtube.com/watch?v=fqARSwfsV9w 
   let delayed;
 
   document.addEventListener('DOMContentLoaded', async () => {
@@ -153,91 +153,107 @@
       const sleepChart = new Chart(sleepCanvas, sleepConfig);
         
     } catch (error) {
-      console.error('CHART API ERROR:' + error);
+      console.error('SLEEP CHART API ERROR:' + error);
     }
   });
 </script>
 
 <script>
-  // "Source Beautiful Chart Animation with Chart.js Tutorial" - https://www.youtube.com/watch?v=fqARSwfsV9w
-
+  // "Source Beautiful Chart Animation with Chart.js Tutorial" - https://www.youtube.com/watch?v=fqARSwfsV9w 
   // let delayed;
-  const waterLabels = ['2023-5-09', '2023-5-10', '2023-5-11', '2023-5-12', '2023-5-13', '2023-5-14', '2023-5-15'];
-  const waterData = {
-    labels: waterLabels,
-    datasets: [{
-      data: [7, 6, 7.5, 5, 6, 4, 8],
-      label: 'Ounces of Water',
-      fill: true,
-      backgroundColor: 'rgba(38,125,206,0.4)',
-      borderColor: 'rgba(14,16,31,1)',
-      borderWidth: 2,
-      pointBackgroundColor: 'rgba(4,170,109,.8)',
-      pointBorderColor: 'rgba(0,0,0,1)',
-      pointHoverBackgroundColor: 'rgba(4,170,109,.8)',
-      pointHoverBorderColor: 'rgba(14,16,31,1)',
-      tension: 0.4,
-    }]
-  };
 
-  const waterConfig = {
-    type: 'bar',
-    data: waterData,
-    options: {
-      radius: 5,
-      hitRadius: 20,
-      hoverRadius: 12,
-      responsive: true,
-      animation: {
-        onComplete: () => {
-          delayed = true;
-        },
-        delay: (context) => {
-          let delay = 0;
-          if (context.type === "data" && context.mode === "default" && !delayed) {
-            delay = context.dataIndex * 500 + context.datasetIndex * 200;
-          }
-          return delay;
-        },
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            callback: function (value) {
-              return value + ' oz.';
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const response = await fetch('/api/water/waterData/{{userId}}');
+      const waterData = await response.json();
+
+      const waterLabels = waterData.map(entry => entry.date);
+      const ounces = waterData.map(entry => entry.ounces);
+      console.log(waterData);
+      console.log('{{userID}}');
+      console.log('Water Data Date: ' + waterLabels);
+      console.log('Water Data Ounces: ' + ounces);
+
+      const waterChartData = {
+        labels: waterLabels,
+        datasets: [{
+          data: ounces,
+          label: 'Ounces of Water',
+          fill: true,
+          backgroundColor: 'rgba(38,125,206,0.4)',
+          borderColor: 'rgba(14,16,31,1)',
+          borderWidth: 2,
+          pointBackgroundColor: 'rgba(4,170,109,.8)',
+          pointBorderColor: 'rgba(0,0,0,1)',
+          pointHoverBackgroundColor: 'rgba(4,170,109,.8)',
+          pointHoverBorderColor: 'rgba(14,16,31,1)',
+          tension: 0.4,
+        }]
+      };
+
+      const waterConfig = {
+        type: 'bar',
+        data: waterChartData,
+        options: {
+          radius: 5,
+          hitRadius: 20,
+          hoverRadius: 12,
+          responsive: true,
+          animation: {
+            onComplete: () => {
+              delayed = true;
             },
-            color: 'black',
+            delay: (context) => {
+              let delay = 0;
+              if (context.type === "data" && context.mode === "default" && !delayed) {
+                delay = context.dataIndex * 500 + context.datasetIndex * 200;
+              }
+              return delay;
+            },
           },
-          suggestedMax: Math.max(...waterData.datasets[0].data) + 1, // Add 1 to the highest data point
-        },
-        x: {
-          ticks: {
-            color: 'black',
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function (value) {
+                  return value + ' oz.';
+                },
+                color: 'black',
+              },
+              suggestedMax: Math.max(...waterChartData.datasets[0].data) + 1,
+            },
+            x: {
+              ticks: {
+                color: 'black',
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              labels: {
+                color: 'black',
+              },
+            },
           },
         },
-      },
-
-      plugins: {
-        legend: {
-          labels: {
-            color: 'black',
-          },
-        },
-      },
-    },
-  };
+      };
 
 
 
-  // Get the canvas element
-  const waterCanvas = document.getElementById('waterChart');
-  // Get the parent element's width
-  const waterParentWidth = waterCanvas.parentElement.clientWidth;
-  // Set the canvas width to match the parent width
-  waterCanvas.width = waterParentWidth;
+      // Get the canvas element
+      const waterCanvas = document.getElementById('waterChart');
+      // Get the parent element's width
+      const waterParentWidth = waterCanvas.parentElement.clientWidth;
+      // Set the canvas width to match the parent width
+      waterCanvas.width = waterParentWidth;
 
-  const waterChart = new Chart(waterCanvas, waterConfig);
+      const waterChart = new Chart(waterCanvas, waterConfig);
+
+    } catch (error) {
+      console.error('WATER CHART API ERROR:' + error);
+    }
+  });
 </script>
 
 <!-- Handlebars END -->
