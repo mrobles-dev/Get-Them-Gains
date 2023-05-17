@@ -1,0 +1,55 @@
+{{!-- <!-- Handlebars START --> --}}
+<div class="container mb-3">
+  <div class="logged-in-div mt-3">
+
+    {{!-- <!-- Navbar Start --> --}}
+    <div class="bg-dark text-white fs-4 rounded-3" style="padding:10px;" id="insideNav">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div id="welcome"><b>Welcome</div>
+        <div>
+          <a href="/tracker" style="text-decoration:none; padding: 0 10px 0 10px;" onclick="goalNavHandler()">Tracker</a>
+          <a href="/workouts" style="text-decoration:none; padding: 0 10px 0 10px;">Workouts</a>
+          <a href="/goals" style="text-decoration:none; padding: 0 10px 0 10px;">Goals</a>
+          <a href="#" style="text-decoration:none; padding: 0 10px 0 10px;" onclick="logout(event)">Logout</a>
+        </div>
+      </div>
+    </div>
+    {{!-- <!-- Navbar End --> --}}
+
+    {{!-- <!-- Headings Start --> --}}
+    <h1 style="text-align: center;"><b>Workouts</b></h1>
+    <h3 style="text-align: center;">Save your workout notes</h3>
+    {{!-- <!-- Headings End --> --}}
+
+    {{!-- <!-- Main Body Start --> --}}
+
+
+
+
+
+        <div class="row">
+          <div class="col-4 list-container">
+            <div class="card">
+              <ul class="list-group"></ul>
+            </div>
+          </div>
+          <div class="col-8">
+            <input class="note-title" placeholder="Note Title" maxlength="28" type="text" />
+            <textarea style="display:grid;" class="note-textarea" placeholder="Note Text"></textarea>
+          </div>
+        <div class="icons">
+          <i class="fas fa-save text-light save-note"></i>
+          <i class="fas fa-plus text-light new-note"></i>
+        </div>
+        </div>
+      </div>
+
+
+
+
+    {{!-- <!-- Main Body End --> --}}
+
+  </div>
+</div>
+<script src="/js/w-o-notes.js"> </script>
+{{!-- <!-- Handlebars END --> --}}

@@ -1,0 +1,28 @@
+[
+  
+  {
+    "name": "Kevin",
+    "email": "kevin@email.com",
+    "password": "Rox454",
+    "startingWeight": 135
+  },
+  {
+    "name": "roshni",
+    "email": "roshni@email.com",
+    "password": "Rox454",
+    "startingWeight": 135
+  },
+  {
+    "name": "marvin",
+    "email": "marvin@email.com",
+    "password": "Rox454",
+    "startingWeight": 150
+  },
+  {
+    "name": "milton",
+    "email": "milton@email.com",
+    "password": "Rox454",
+    "startingWeight": 635
+  }
+
+]

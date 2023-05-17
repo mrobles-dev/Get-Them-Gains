@@ -1,13 +1,13 @@
 const loginFormHandler = async (event) => {
-  // Stop the browser from submitting the form so we can do so with JavaScript
   event.preventDefault();
 
-  // Gather the data from the form elements on the page
-  const email = document.querySelector('#email-login').value.trim();
-  const password = document.querySelector('#password-login').value.trim();
+  // Collect values from the login form
+  const email = document.querySelector('#email').value.trim();
+  const password = document.querySelector('#password').value.trim();
 
   if (email && password) {
-    // Send the e-mail and password to the server
+    console.log('test');
+    // Send a POST request to the API endpoint
     const response = await fetch('/api/users/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
@@ -15,9 +15,11 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/');
+      // If successful, redirect the browser to the profile page
+      document.location.replace('/tracker');
     } else {
-      alert('Failed to log in');
+      alert(response.statusText);
+    
     }
   }
 };
