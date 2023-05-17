@@ -15,10 +15,11 @@ const waterFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful, show the message below
-      alert('Water entry added successfully!');
+      console.log('Water entry added successfully!');
     } else {
-      // If the request fails, display the error message
-      alert(response.statusText);
+      // If there is an error, display the error message
+      const errorData = await response.json();
+      console.error(errorData);
     }
   }
 };

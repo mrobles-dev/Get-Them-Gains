@@ -13,11 +13,11 @@ router.post('/', withAuth, async (req, res) => {
     console.log('ding')
     const newWaterIntake = await Water.create({
       ...req.body,
-      user_id: req.session.user_id,
+      userId: req.session.user_id,
     });
 
     res.status(200).json(newWaterIntake);
-    console.log('ding')
+    console.log('cake')
 
   } catch (err) {
     res.status(400).json(err);
@@ -71,58 +71,3 @@ router.delete('/:id', withAuth, async (req, res) => {
 });
 
 module.exports = router;
-
-
-
-// const router = require('express').Router();
-// const { Water } = require('../../models');
-// const withAuth = require('../../utils/auth');
-
-// // Add water intake to the database
-// router.post('/', withAuth, async (req, res) => {
-//   try {
-//     const newWaterIntake = await Water.create({
-//       ...req.body,
-//       user_id: req.session.user_id,
-//     });
-
-//     res.status(200).json(newWaterIntake);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
-
-// // Find water data to display in the tracker
-// router.get('/', withAuth, async (req, res) => {
-//   try {
-//     const userId = req.session.user_id;
-//     const waterIntakeData = await Water.findAll({
-//       where: {
-//         user_id: userId,
-//       },
-//       attributes: ['date', 'ounces'],
-//       order: [['date', 'ASC']],
-//     });
-
-//     res.status(200).json(waterIntakeData);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
-
-// // Delete a water intake record from the database
-// router.delete('/:id', withAuth, async (req, res) => {
-//   try {
-//     const waterIntake = await Water.findByPk(req.params.id);
-//     if (!waterIntake) {
-//       res.status(404).json({ message: 'No water intake found with this id!' });
-//       return;
-//     }
-//     await waterIntake.destroy();
-//     res.status(200).json({ message: 'Water intake deleted successfully!' });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-// module.exports = router;
