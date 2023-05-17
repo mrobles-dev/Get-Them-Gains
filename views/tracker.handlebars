@@ -164,7 +164,7 @@
 
   document.addEventListener('DOMContentLoaded', async () => {
     try {
-      const response = await fetch('/api/water/waterData/{{userId}}');
+      const response = await fetch(`/api/water/waterData/{{userId}}`);
       const waterData = await response.json();
 
       const waterLabels = waterData.map(entry => entry.date);

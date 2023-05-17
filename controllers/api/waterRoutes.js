@@ -24,7 +24,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-// Find sleep data to display in the tracker
+// Find water data to display in the tracker
 router.get('/waterData/:id', withAuth, async (req, res) => {
   const userId = req.params.id;
   const pastWeek = moment().subtract(7, 'days').toDate();
@@ -32,12 +32,14 @@ router.get('/waterData/:id', withAuth, async (req, res) => {
   try {
     const waterData = await Water.findAll({
       where: {
-        user_id: userId,
+        userid: userId,
         date: { [Op.gte]: pastWeek },
       },
       attributes: ['date', 'ounces'],
       order: [['date', 'ASC']],
     });
+    
+    console.log(waterData);
 
     res.json(waterData);
   } catch (error) {
