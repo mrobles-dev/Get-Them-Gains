@@ -23,7 +23,7 @@ Sleep.init(
       allowNull: false
     },
     hours: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(5, 2),
       allowNull: false
     },
   },

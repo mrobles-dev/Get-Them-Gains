@@ -23,26 +23,28 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 
-//Find sleep data to display in the tracker
-router.get('/sleep/:id', withAuth, async (req, res) => {
+// Find sleep data to display in the tracker
+router.get('/sleepData/:id', withAuth, async (req, res) => {
   const userId = req.params.id;
-  const startDate = moment().subtract(7, 'days').format('YYYY-MM-DD');
-  const endDate = moment().format('YYYY-MM-DD');
-  const sleepData = await Sleep.findAll({
-    where: {
-      userId: userId,
-      date: {
-        [Op.between]: [startDate, endDate]
-      }
-    }
-  }).map(entry => {
-    return {
-      date: entry.date,
-      hours: entry.hours
-    };
-  });
-  res.render('sleep', { sleepData });
+  const pastWeek = moment().subtract(7, 'days').toDate();
+
+  try {
+    const sleepData = await Sleep.findAll({
+      where: {
+        user_id: userId,
+        date: { [Op.gte]: pastWeek },
+      },
+      attributes: ['date', 'hours'],
+      order: [['date', 'ASC']],
+    });
+
+    res.json(sleepData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred sending sleep data' });
+  }
 });
+
 
 
 // Delete a sleep record from the database
