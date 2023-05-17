@@ -1,12 +1,12 @@
 const sequelize = require('../config/connection');
-const { User, Sleep } = require('../models');
-const { Weight } = require('../models')
-const { Water } = require('../models')
+const { User, Sleep, Water } = require('../models');
+// const { Weight } = require('../models')
+
 
 const userData = require('./userData.json');
 const sleepData = require('./sleepData.json');
-const weightData = require('../weightData.json')
-const waterData = require('../sleepData.json')
+// const weightData = require('./weightData.json')
+const waterData = require('./sleepData.json')
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
@@ -21,13 +21,13 @@ const seedDatabase = async () => {
       // user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
-  for (const weight of weightData) {
-    await Weight.create({
-      ...weight
-    });
-  }
+  // for (const weight of weightData) {
+  //   await Weight.create({
+  //     ...weight
+  //   });
+  // }
   for (const water of waterData) {
-    await water.create({
+    await Water.create({
       ...water
     });
   }

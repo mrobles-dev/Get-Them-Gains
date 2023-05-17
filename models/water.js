@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Water extends Model { }
+class Water extends Model {}
 
 Water.init(
   {
@@ -12,7 +12,7 @@ Water.init(
     },
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      //allowNull: false,
       references: {
         model: 'user',
         key: 'id',
@@ -24,7 +24,7 @@ Water.init(
     },
     ounces: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      //allowNull: false
     }
   },
   {
