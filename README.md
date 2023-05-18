@@ -2,12 +2,9 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+This application caters to individuals dedicated to cultivating a more health-conscious lifestyle. Users can initiate their journey by signing in using their email and password. Upon accessing the application, a comprehensive goal-setting feature enables users to establish their current weight and desired weight goal, generating a progress bar that visually depicts their proximity to achieving their desired objective. Furthermore, the application empowers users to input their daily water intake and hours of sleep, facilitating the creation of two distinct charts that visually represent their past and present data, allowing for easy analysis and tracking of personal trends.
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+We have developed this application with the dual purpose of fostering personal motivation and inspiring others to pursue a healthier lifestyle. By effectively monitoring and recording vital information, it addresses the common challenge of consistently documenting weight, water intake, and sleep patterns. Through a simple sign-in process, users gain access to their personal accounts, enabling them to effortlessly log their daily progress and maintain a comprehensive record of their health-related data. This streamlined approach eliminates the need for manual note-taking and ensures that users can effortlessly track and monitor their vital metrics.
 
 ## Table of Contents
 
@@ -15,12 +12,52 @@ Provide a short description explaining the what, why, and how of your project. U
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
+- [Wireframe](#wireframe)
+
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+1. Firstly, clone the repository to your local computer.
+
+2. Open up the terminal and type in: npm i which will download all the needed packages.
+
+![packages](assets/zero.png)
+
+3. Open up the terminal and create the database. Run command: mysql -u root -p then enter in your password.
+
+![db](assets/first.png)
+
+4. Run command: ./db/schema.sql to create the database.
+
+![db-create](assets/second.png)
+
+5. Run command: quit to get out of mysql.
+
+![quit](assets/third.png)
+
+6. Run command: npm run seed which will allow you to populate the database from your CLI.
+
+![run-seed](assets/fourth.png)
+
+7. Run command: npm start to run the server file which will be listening at localhost:3001 
+
+![start](assets/fifth.png)
 
 ## Usage
+
+1. When you open up the server, you will be shown to either sign in or sign up, you should choose the latter.
+
+![signup](assets/signup.png)
+
+2. Then you will be redirected to the goals page where you can input information for weight, sleep, and water.
+
+![input](assets/add-input.png)
+
+3. After inputting your data, you can click on 'tracker' which will then proceed to show you a progress bar, a chart for sleep, and another chart for water intake. 
+
+![progress]
+
+## Wireframe
 
 Here is our initial wireframe for our login, registration, and logged in pages:
 
@@ -29,10 +66,6 @@ Here is our initial wireframe for our login, registration, and logged in pages:
 Here is the layout of our database tables:
 
 ![Tables](assets/tables.jpg)
-
-We will add additional screenshots here once they are ready.
-
-Provide instructions and examples for use.
 
 
 ## Credits

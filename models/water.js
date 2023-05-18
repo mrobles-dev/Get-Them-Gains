@@ -24,7 +24,7 @@ Water.init(
     },
     ounces: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      // allowNull: false
     }
   },
   {
