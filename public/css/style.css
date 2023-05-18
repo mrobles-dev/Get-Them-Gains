@@ -187,7 +187,7 @@ button {
   line-height: 37px;
   color: white;
   background-color: #04AA6D;
-  transition: width 2s ease;
+  transition: width 3s ease;
 }
 
 #note-textarea{
