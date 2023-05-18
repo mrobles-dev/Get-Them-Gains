@@ -10,7 +10,7 @@ Water.init(
       primaryKey: true,
       autoIncrement: true
     },
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
       //allowNull: false,
       references: {

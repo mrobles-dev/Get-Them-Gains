@@ -13,7 +13,7 @@ router.post('/', withAuth, async (req, res) => {
     console.log('ding')
     const newWaterIntake = await Water.create({
       ...req.body,
-      userId: req.session.user_id,
+      user_id: req.session.user_id,
     });
 
     res.status(200).json(newWaterIntake);
@@ -26,13 +26,13 @@ router.post('/', withAuth, async (req, res) => {
 
 // Find water data to display in the tracker
 router.get('/waterData/:id', withAuth, async (req, res) => {
-  const userId = req.params.id;
+  const user_id = req.params.id;
   const pastWeek = moment().subtract(7, 'days').toDate();
 
   try {
     const waterData = await Water.findAll({
       where: {
-        userid: userId,
+        user_id: user_id,
         date: { [Op.gte]: pastWeek },
       },
       attributes: ['date', 'ounces'],
@@ -52,12 +52,12 @@ router.get('/waterData/:id', withAuth, async (req, res) => {
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const waterIntakeId = req.params.id;
-    const userId = req.session.user_id;
+    const user_id = req.session.user_id;
 
     const deletedWaterIntake = await Water.destroy({
       where: {
         id: waterIntakeId,
-        user_id: userId
+        user_id: user_id
       }
     });
 

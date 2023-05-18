@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { User, Weight } = require('../models');
 // const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
@@ -21,9 +22,14 @@ router.get('/register', (req, res) => {
 
 
 router.get("/tracker", withAuth, async (req, res) => {
+  const dbUserData=await User.findByPk(req.session.user_id, {include:[Weight]})
+  const user= dbUserData.get({plain:true})
+  console.log(user);
   res.render("tracker", {
     logged_in: true,
-    userId: req.session.user_id
+    user:user,
+    weight:user.weights[0],
+    user_id: req.session.user_id
   });
 });
 

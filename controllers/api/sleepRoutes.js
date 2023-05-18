@@ -25,13 +25,13 @@ router.post('/', withAuth, async (req, res) => {
 
 // Find sleep data to display in the tracker
 router.get('/sleepData/:id', withAuth, async (req, res) => {
-  const userId = req.params.id;
+  const user_id = req.params.id;
   const pastWeek = moment().subtract(7, 'days').toDate();
   
   try {
     const sleepData = await Sleep.findAll({
       where: {
-        user_id: userId,
+        user_id: user_id,
         date: { [Op.gte]: pastWeek },
       },
       attributes: ['date', 'hours'],

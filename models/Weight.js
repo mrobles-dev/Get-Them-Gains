@@ -9,7 +9,7 @@ Weight.init({
     primaryKey: true,
     autoIncrement: true
   },
-  userId: {
+  user_id: {
     type: DataTypes.INTEGER,
     references: {
       model: 'user',

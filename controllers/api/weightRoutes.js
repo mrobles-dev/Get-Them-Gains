@@ -6,7 +6,7 @@ router.post('/', withAuth, async (req, res) => {
     try {
       const newWeight = await Weight.create({
         ...req.body,
-        userId: req.session.user_id,
+        user_id: req.session.user_id,
       });
   
       res.status(200).json(newWeight);
@@ -17,10 +17,10 @@ router.post('/', withAuth, async (req, res) => {
 
   router.get('/', withAuth, async (req, res) => {
     try {
-      const weightId = req.session.user_id;
+      const user_id = req.session.user_id;
       const weightData = await Weight.findAll({
         where: {
-          user_id: userId,
+          user_id: user_id,
         }
       });
       
@@ -33,12 +33,12 @@ router.post('/', withAuth, async (req, res) => {
   router.delete('/:id', withAuth, async (req, res) => {
     try {
       const weightId = req.params.id;
-      const userId = req.session.user_id;
+      const user_id = req.session.user_id;
   
       const deletedWeightIntake = await Weight.destroy({
         where: {
           id: weightId,
-          user_id: userId
+          user_id: user_id
         }
       });
   
