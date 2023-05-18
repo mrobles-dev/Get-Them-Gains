@@ -26,6 +26,10 @@ Here is our initial wireframe for our login, registration, and logged in pages:
 
 ![Wireframe](assets/wireframe.jpg)
 
+Here is the layout of our database tables:
+
+![Tables](assets/tables.jpg)
+
 We will add additional screenshots here once they are ready.
 
 Provide instructions and examples for use.
@@ -84,6 +88,7 @@ Provide instructions and examples for use.
 
 14. I found an article called "Sequelize Where Statement with date" on Stack Overflow and the answer from user "Evan Siroky" gave me the idea of using the gte operator and moment.js to get 7 days of data for the chart display.  Here is a link to the page (Kevin): https://stackoverflow.com/questions/29798357/sequelize-where-statement-with-date
 
+15. The 14-28 Student Mini-Project assignment served as inspiration for setting up the server and routes to get us started.
 
 
 ## License
