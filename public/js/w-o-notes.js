@@ -28,7 +28,6 @@ if (response.ok){
 
 
 
-
 document.querySelector(".save-note").addEventListener("submit", workoutHandler);
 
 
