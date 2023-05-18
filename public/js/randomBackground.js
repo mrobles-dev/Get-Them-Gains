@@ -21,26 +21,6 @@ randomBackgroundImage();
 
 //! Lodash
 
-//! See Credits for Progress Bar Inspiration
-//Progress Bar Javascript
-// progress = 0;
-
-// const progressContainer = document.getElementById("hideProgress");
-
-// progressContainer.classList.remove("hidden");
-
-
-// function updateProgressBar() {
-//   if (progress < 100) {
-//     var elem = document.getElementById("myBar");
-//     progress += 20;
-//     elem.style.width = progress + "%";
-//     elem.innerHTML = progress + "%";
-//   }
-// };
-
-// updateProgressBar();
-
 
 //! Source for favicon https://spemer.com/articles/set-favicon-with-javascript.html 
 //FavIcon Javascript
