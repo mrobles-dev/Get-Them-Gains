@@ -105,7 +105,7 @@
               delay: (context) => {
                 let delay = 0;
                 if (context.type === "data" && context.mode === "default" && !delayed) {
-                delay = context.dataIndex * 600 + context.datasetIndex * 200;
+                delay = context.dataIndex * 1000 + context.datasetIndex * 3000;
                 }
                   return delay;
               },
@@ -200,7 +200,7 @@
             delay: (context) => {
               let delay = 0;
               if (context.type === "data" && context.mode === "default" && !delayed) {
-                delay = context.dataIndex * 900 + context.datasetIndex * 200;
+                delay = context.dataIndex * 2000 + context.datasetIndex * 5000;
               }
               return delay;
             },
