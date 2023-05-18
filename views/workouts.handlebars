@@ -26,21 +26,22 @@
     {{!-- <!-- Main Body Start --> --}}
 
 
-        {{#each workouts as |workout|}}
+        
         <div class="row">
           <div class="col-4 list-container">
             <div class="card">
-              <ul class="list-group"> {{workout.text}} </ul>
+              <ul class="list-group"> Your Workouts</ul>
+                <li>{{workout.title}}</li>
+                <li>{{workout.text}}</li>
             </div>
           </div>
-          {{/each}}
           <div class="col-8">
             <input class="note-title" placeholder="Note Title" maxlength="28" type="text" />
             <textarea style="display:grid;" class="note-textarea" placeholder="Note Text"></textarea>
           </div>
         <div class="icons">
-          <i class="fas fa-save text-light save-note">save this</i>
-          <i class="fas fa-plus text-light new-note">new this</i>
+          <button class="fas fa-save text-light save-note">save this</button>
+          <button class="fas fa-plus text-light new-note">new this</button>
         </div>
         </div>
       </div>
