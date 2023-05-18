@@ -27,3 +27,13 @@ const sleepFormHandler = async (event) => {
 document
   .querySelector('.sleep-form')
   .addEventListener('submit', sleepFormHandler);
+
+
+//Delayed Image
+
+  window.onload = function() {
+  setTimeout(function() {
+    var delayedImage = document.querySelector('.delayed-image');
+    delayedImage.classList.add('fade-in');
+  }, 300);
+};
