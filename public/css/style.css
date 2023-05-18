@@ -98,6 +98,10 @@ button {
   width: 30%;
 }
 
+#workoutsLogo {
+  width: 45%;
+}
+
 .delayed-image {
   animation: fade-in 1.5s linear 0.3s forwards;
   opacity: 0;
@@ -226,6 +230,10 @@ button {
   #goalsLogo {
     width: 50%;
   }
+
+    #workoutsLogo {
+      width: 40%;
+    }
 }
 
 
