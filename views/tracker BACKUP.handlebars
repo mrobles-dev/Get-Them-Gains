@@ -7,7 +7,8 @@
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <div id="welcome"><b>Welcome</div>
         <div>
-          <a href="/tracker" style="text-decoration:none; padding: 0 10px 0 10px;" onclick="goalNavHandler()">Tracker</a>
+          <a href="/tracker" style="text-decoration:none; padding: 0 10px 0 10px;"
+            onclick="goalNavHandler()">Tracker</a>
           <a href="/workouts" style="text-decoration:none; padding: 0 10px 0 10px;">Workouts</a>
           <a href="/goals" style="text-decoration:none; padding: 0 10px 0 10px;">Goals</a>
           <a href="#" style="text-decoration:none; padding: 0 10px 0 10px;" onclick="logout(event)">Logout</a>
@@ -17,212 +18,242 @@
     <!-- Navbar End -->
 
     <!-- Headings Start -->
-    <h1 style="text-align: center;"><b>Fitness Tracker</b></h1>
+    <div class="text-center">
+      <img src="/assets/logoTest.png" style="margin: 30px 0 30px 0;" id="trackerLogo" class="delayed-image"
+        align="center">
+    </div>
     <h3 style="text-align: center;">Visualize your progress to reach your goals!</h3>
     <!-- Headings End -->
 
     <!-- Main Body Start -->
-    
-    {{!-- <div class="row">
-      <ul>
-      <li> {{water.ounces}} </li>
-      <li> {{sleep.hours}} </li>
-      <li> {{Weight.currentWeight}} </li>
-      </ul>
-    </div> --}}
 
     <!-- Weight Loss Progress Bar -->
     <div class="row">
       <h5 class="pt-3"><b>Weight Loss Goal:</b></h5>
       <div id="hideProgress" class="hidden">
         <div id="myProgress" class="progress-container">
-          <div id="myBar">0%</div>
+          <div data-startingweight="{{user.startingWeight}}" data-weightgoal="{{weight.weightGoal}}"
+            data-currentweight="{{weight.currentWeight}}" id="myBar">0%</div>
         </div>
       </div>
     </div>
     <!-- Main Body End -->
 
-  <!--  Chart JS Source -->
-  <!--  Chart JS CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.js"
-  integrity="sha512-CMF3tQtjOoOJoOKlsS7/2loJlkyctwzSoDK/S40iAB+MqWSaf50uObGQSk5Ny/gfRhRCjNLvoxuCvdnERU4WGg=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="/js/chart.js"></script>
-<!-- Sleep Chart -->
-<h5 class="pt-5"><b>Sleep Tracker:</b></h5>
-<div class="chart">
-  <canvas id="sleepChart" style="width: 100%;"></canvas>
+    <!--  Chart JS Source -->
+    <!--  Chart JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.js"
+      integrity="sha512-CMF3tQtjOoOJoOKlsS7/2loJlkyctwzSoDK/S40iAB+MqWSaf50uObGQSk5Ny/gfRhRCjNLvoxuCvdnERU4WGg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/chart.js"></script>
+    <!-- Sleep Chart -->
+    <h5 class="pt-5"><b>Sleep Tracker:</b></h5>
+    <div class="chart">
+      <canvas id="sleepChart" style="width: 100%;"></canvas>
     </div>
-<!-- Water Chart -->
-<h5 class="pt-5"><b>Water Tracker:</b></h5>
-<div class="chart">
-  <canvas id="waterChart" style="width: 100%;"></canvas>
-</div>
+    <!-- Water Chart -->
+    <h5 class="pt-5"><b>Water Tracker:</b></h5>
+    <div class="chart">
+      <canvas id="waterChart" style="width: 100%;"></canvas>
+    </div>
 
   </div>
 </div>
 
+
 <script>
-  // "Source Beautiful Chart Animation with Chart.js Tutorial" - https://www.youtube.com/watch?v=fqARSwfsV9w
+  // "Source Beautiful Chart Animation with Chart.js Tutorial" - https://www.youtube.com/watch?v=fqARSwfsV9w 
   let delayed;
-  const sleepLabels = ['2023-5-09', '2023-5-10', '2023-5-11', '2023-5-12', '2023-5-13', '2023-5-14', '2023-5-15'];
-  const data = {
-    labels: sleepLabels,
-    datasets: [{
-      data: [7, 6, 7.5, 5, 6, 4, 8],
-      label: 'Hours of Sleep',
-      fill: true,
-      backgroundColor: 'rgba(38,125,206,0.4)',
-      borderColor: 'rgba(14,16,31,1)',
-      borderWidth: 2,
-      pointBackgroundColor: 'rgba(4,170,109,.8)',
-      pointBorderColor: 'rgba(0,0,0,1)',
-      pointHoverBackgroundColor: 'rgba(4,170,109,.8)',
-      pointHoverBorderColor: 'rgba(14,16,31,1)',
-      tension: 0.4,
-    }]
-  };
 
- const sleepConfig = {
-    type: 'line',
-    data: data,
-    options: {
-      radius: 5,
-      hitRadius: 20,
-      hoverRadius: 12,
-      responsive: true,
-      animation: {
-        onComplete: () => {
-          delayed = true;
-        },
-        delay: (context) => {
-          let delay = 0;
-          if (context.type === "data" && context.mode === "default" && !delayed) {
-            delay = context.dataIndex * 500 + context.datasetIndex * 200;
-          }
-          return delay;
-        },
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            callback: function (value) {
-              return value + 'hrs';
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const response = await fetch('/api/sleep/sleepData/{{user_id}}');
+      const sleepData = await response.json();
+
+      const sleepLabels = sleepData.map(entry => entry.date);
+      const hours = sleepData.map(entry => entry.hours);
+      console.log(sleepData);
+      console.log('{{user_id}}');
+      console.log('Sleep Data Date: ' + sleepLabels);
+      console.log('Sleep Data Hours: ' + hours);
+
+      const data = {
+        labels: sleepLabels,
+        datasets: [{
+          data: hours,
+          label: 'Hours of Sleep',
+          fill: true,
+          backgroundColor: 'rgba(38,125,206,0.4)',
+          borderColor: 'rgba(14,16,31,1)',
+          borderWidth: 2,
+          pointBackgroundColor: 'rgba(4,170,109,.8)',
+          pointBorderColor: 'rgba(0,0,0,1)',
+          pointHoverBackgroundColor: 'rgba(4,170,109,.8)',
+          pointHoverBorderColor: 'rgba(14,16,31,1)',
+          tension: 0.4,
+        }]
+      };
+
+      const sleepConfig = {
+        type: 'line',
+        data: data,
+        options: {
+          radius: 5,
+          hitRadius: 20,
+          hoverRadius: 12,
+          responsive: true,
+          animation: {
+            onComplete: () => {
+              delayed = true;
             },
-            color: 'black',
+            delay: (context) => {
+              let delay = 0;
+              if (context.type === "data" && context.mode === "default" && !delayed) {
+                delay = context.dataIndex * 1000 + context.datasetIndex * 3000;
+              }
+              return delay;
+            },
           },
-          suggestedMax: Math.max(...data.datasets[0].data) + 1, // Add 1 to the highest data point
-        },
-        x: {
-          ticks: {
-            color: 'black',
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function (value) {
+                  return value + 'hrs';
+                },
+                color: 'black',
+              },
+              suggestedMax: Math.max(...data.datasets[0].data) + 1,
+            },
+            x: {
+              ticks: {
+                color: 'black',
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              labels: {
+                color: 'black',
+              },
+            },
           },
         },
-      },
+      };
 
-      plugins: {
-        legend: {
-          labels: {
-            color: 'black',
-          },
-        },
-      },
-    },
-  };
+      // Get the canvas element
+      const sleepCanvas = document.getElementById('sleepChart');
+      // Get the parent element's width
+      const parentWidth = sleepCanvas.parentElement.clientWidth;
+      // Set the canvas width to match the parent width
+      sleepCanvas.width = parentWidth;
 
+      const sleepChart = new Chart(sleepCanvas, sleepConfig);
 
-
-  // Get the canvas element
-    const sleepCanvas = document.getElementById('sleepChart');
-    // Get the parent element's width
-    const parentWidth = sleepCanvas.parentElement.clientWidth;
-    // Set the canvas width to match the parent width
-    sleepCanvas.width = parentWidth;
-
-    const sleepChart = new Chart(sleepCanvas, sleepConfig);
+    } catch (error) {
+      console.error('SLEEP CHART API ERROR:' + error);
+    }
+  });
 </script>
 
 <script>
-  // "Source Beautiful Chart Animation with Chart.js Tutorial" - https://www.youtube.com/watch?v=fqARSwfsV9w
-
+  // "Source Beautiful Chart Animation with Chart.js Tutorial" - https://www.youtube.com/watch?v=fqARSwfsV9w 
   // let delayed;
-  const waterLabels = ['2023-5-09', '2023-5-10', '2023-5-11', '2023-5-12', '2023-5-13', '2023-5-14', '2023-5-15'];
-  const waterData = {
-    labels: waterLabels,
-    datasets: [{
-      data: [7, 6, 7.5, 5, 6, 4, 8],
-      label: 'Ounces of Water',
-      fill: true,
-      backgroundColor: 'rgba(38,125,206,0.4)',
-      borderColor: 'rgba(14,16,31,1)',
-      borderWidth: 2,
-      pointBackgroundColor: 'rgba(4,170,109,.8)',
-      pointBorderColor: 'rgba(0,0,0,1)',
-      pointHoverBackgroundColor: 'rgba(4,170,109,.8)',
-      pointHoverBorderColor: 'rgba(14,16,31,1)',
-      tension: 0.4,
-    }]
-  };
 
-  const waterConfig = {
-    type: 'bar',
-    data: waterData,
-    options: {
-      radius: 5,
-      hitRadius: 20,
-      hoverRadius: 12,
-      responsive: true,
-      animation: {
-        onComplete: () => {
-          delayed = true;
-        },
-        delay: (context) => {
-          let delay = 0;
-          if (context.type === "data" && context.mode === "default" && !delayed) {
-            delay = context.dataIndex * 500 + context.datasetIndex * 200;
-          }
-          return delay;
-        },
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            callback: function (value) {
-              return value + ' oz.';
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const response = await fetch(`/api/water/waterData/{{user_id}}`);
+      const waterData = await response.json();
+
+      const waterLabels = waterData.map(entry => entry.date);
+      const ounces = waterData.map(entry => entry.ounces);
+      console.log(waterData);
+      console.log('{{user_id}}');
+      console.log('Water Data Date: ' + waterLabels);
+      console.log('Water Data Ounces: ' + ounces);
+
+      const waterChartData = {
+        labels: waterLabels,
+        datasets: [{
+          data: ounces,
+          label: 'Ounces of Water',
+          fill: true,
+          backgroundColor: 'rgba(38,125,206,0.4)',
+          borderColor: 'rgba(14,16,31,1)',
+          borderWidth: 2,
+          pointBackgroundColor: 'rgba(4,170,109,.8)',
+          pointBorderColor: 'rgba(0,0,0,1)',
+          pointHoverBackgroundColor: 'rgba(4,170,109,.8)',
+          pointHoverBorderColor: 'rgba(14,16,31,1)',
+          tension: 0.4,
+        }]
+      };
+
+      const waterConfig = {
+        type: 'bar',
+        data: waterChartData,
+        options: {
+          radius: 5,
+          hitRadius: 20,
+          hoverRadius: 12,
+          responsive: true,
+          animation: {
+            onComplete: () => {
+              delayed = true;
             },
-            color: 'black',
+            delay: (context) => {
+              let delay = 0;
+              if (context.type === "data" && context.mode === "default" && !delayed) {
+                delay = context.dataIndex * 2000 + context.datasetIndex * 5000;
+              }
+              return delay;
+            },
           },
-          suggestedMax: Math.max(...data.datasets[0].data) + 1, // Add 1 to the highest data point
-        },
-        x: {
-          ticks: {
-            color: 'black',
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function (value) {
+                  return value + ' oz.';
+                },
+                color: 'black',
+              },
+              suggestedMax: Math.max(...waterChartData.datasets[0].data) + 1,
+            },
+            x: {
+              ticks: {
+                color: 'black',
+              },
+            },
+          },
+
+          plugins: {
+            legend: {
+              labels: {
+                color: 'black',
+              },
+            },
           },
         },
-      },
-
-      plugins: {
-        legend: {
-          labels: {
-            color: 'black',
-          },
-        },
-      },
-    },
-  };
+      };
 
 
 
-  // Get the canvas element
-  const waterCanvas = document.getElementById('waterChart');
-  // Get the parent element's width
-  const waterParentWidth = waterCanvas.parentElement.clientWidth;
-  // Set the canvas width to match the parent width
-  waterCanvas.width = waterParentWidth;
+      // Get the canvas element
+      const waterCanvas = document.getElementById('waterChart');
+      // Get the parent element's width
+      const waterParentWidth = waterCanvas.parentElement.clientWidth;
+      // Set the canvas width to match the parent width
+      waterCanvas.width = waterParentWidth;
 
-  const waterChart = new Chart(waterCanvas, waterConfig);
+      const waterChart = new Chart(waterCanvas, waterConfig);
+
+    } catch (error) {
+      console.error('WATER CHART API ERROR:' + error);
+    }
+  });
 </script>
+
+<script src="/js/weight.js"></script>
+<script src="/js/tracker.js"></script>
 
 <!-- Handlebars END -->
