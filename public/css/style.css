@@ -113,6 +113,11 @@ button {
   }
 }
 
+.uc{
+  display: grid;
+}
+
+
 .fas {
   margin-left: 15px;
   margin-right: 15px;
