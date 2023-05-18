@@ -27,7 +27,6 @@ if (response.ok){
 };
 
 
-document.querySelector(".save-note").addEventListener("click", workoutHandler);
 
 
 document.querySelector(".save-note").addEventListener("submit", workoutHandler);
