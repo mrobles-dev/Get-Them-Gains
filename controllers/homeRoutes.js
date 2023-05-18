@@ -28,7 +28,8 @@ router.get("/tracker", withAuth, async (req, res) => {
   res.render("tracker", {
     logged_in: true,
     user:user,
-    userId: req.session.user_id
+    weight:user.weights[0],
+    user_id: req.session.user_id
   });
 });
 
