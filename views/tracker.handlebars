@@ -36,7 +36,7 @@
       <h5 class="pt-3"><b>Weight Loss Goal:</b></h5>
       <div id="hideProgress" class="hidden">
         <div id="myProgress" class="progress-container">
-          <div id="myBar">0%</div>
+          <div data-startingweight="{{user.startingWeight}}"id="myBar">0%</div>
         </div>
       </div>
     </div>
@@ -255,5 +255,5 @@
     }
   });
 </script>
-
+<script src="/js/weight.js"></script>
 <!-- Handlebars END -->

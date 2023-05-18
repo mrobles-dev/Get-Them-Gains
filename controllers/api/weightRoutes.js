@@ -17,7 +17,7 @@ router.post('/', withAuth, async (req, res) => {
 
   router.get('/', withAuth, async (req, res) => {
     try {
-      const weightId = req.session.user_id;
+      const userId = req.session.user_id;
       const weightData = await Weight.findAll({
         where: {
           user_id: userId,
