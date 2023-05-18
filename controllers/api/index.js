@@ -4,7 +4,7 @@ const userRoutes = require('./userRoutes');
 const sleepRoutes = require('./sleepRoutes');
 const waterRoutes = require('./waterRoutes');
 const weightRoutes = require('./weightRoutes');
-const workoutsRoutes = require("./workouts");
+const workoutsRoutes = require("./workoutRoutes");
 
 
 router.use('/users', userRoutes);
