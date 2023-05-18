@@ -61,6 +61,10 @@ router.get("/goals", withAuth, async (req, res) => {
 
 router.get("/workouts", withAuth, async (req, res) => {
 
+  // mini project and reading all
+
+
+
     res.render("workouts", {
       logged_in: true,
     });

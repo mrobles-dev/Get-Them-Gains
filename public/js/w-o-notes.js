@@ -1,8 +1,10 @@
 const workoutHandler = async (event) =>{
     event.preventDefault();
 
-const title = document.querySelector('#note-title').value.trim();
-const text = document.querySelector('#note-textarea').value.trim();
+const title = document.getElementById('note-title').value;
+const text = document.getElementById('note-textarea').value
+
+console.log(title, text);
 
 if (title && text) {
     try{
@@ -25,4 +27,5 @@ if (response.ok){
 };
 
 
-document.querySelector(".save-note").addEventListener("submit", workoutHandler);
+document.querySelector(".save-note").addEventListener("click", workoutHandler);
+

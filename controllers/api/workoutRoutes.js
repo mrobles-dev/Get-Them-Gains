@@ -7,18 +7,18 @@ const withAuth= require('../../utils/auth')
 
 router.post("/", withAuth, async (req, res) => {
   try {
-    const newWorkouts = await Workouts.create({
+    const newWorkout = await Workouts.create({
       ...req.body,
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newWorkouts);
+    res.status(200).json(newWorkout);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.get("/workouts/:id", withAuth, async (req, res) => {
+router.get("/:id", withAuth, async (req, res) => {
   try {
     const workoutId = req.session.user_id;
     const workoutData = await Workouts.findAll({
