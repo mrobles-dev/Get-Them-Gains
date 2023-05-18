@@ -23,7 +23,7 @@ router.get("/workouts/:id", withAuth, async (req, res) => {
     const workoutId = req.session.user_id;
     const workoutData = await Workouts.findAll({
       where: {
-        user_id: userId,
+        user_id: user_id,
       },
     });
 

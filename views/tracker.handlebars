@@ -30,7 +30,7 @@
       <h5 class="pt-3"><b>Weight Loss Goal:</b></h5>
       <div id="hideProgress" class="hidden">
         <div id="myProgress" class="progress-container">
-          <div id="myBar">0%</div>
+          <div data-startingweight="{{user.startingWeight}}" data-weightgoal="{{weight.weightGoal}}" data-currentweight="{{weight.currentWeight}}"id="myBar">0%</div>
         </div>
       </div>
     </div>
@@ -63,13 +63,13 @@
 
   document.addEventListener('DOMContentLoaded', async () => {
     try {
-      const response = await fetch('/api/sleep/sleepData/{{userId}}');
+      const response = await fetch('/api/sleep/sleepData/{{user_id}}');
       const sleepData = await response.json();
 
       const sleepLabels = sleepData.map(entry => entry.date);
       const hours = sleepData.map(entry => entry.hours);
       console.log(sleepData);
-      console.log('{{userID}}');
+      console.log('{{user_id}}');
       console.log('Sleep Data Date: ' + sleepLabels);
       console.log('Sleep Data Hours: ' + hours);
 
@@ -158,13 +158,13 @@
 
   document.addEventListener('DOMContentLoaded', async () => {
     try {
-      const response = await fetch(`/api/water/waterData/{{userId}}`);
+      const response = await fetch(`/api/water/waterData/{{user_id}}`);
       const waterData = await response.json();
 
       const waterLabels = waterData.map(entry => entry.date);
       const ounces = waterData.map(entry => entry.ounces);
       console.log(waterData);
-      console.log('{{userID}}');
+      console.log('{{user_id}}');
       console.log('Water Data Date: ' + waterLabels);
       console.log('Water Data Ounces: ' + ounces);
 
@@ -249,5 +249,7 @@
     }
   });
 </script>
+
 <script src="/js/tracker.js"></script>
+
 <!-- Handlebars END -->
