@@ -13,6 +13,7 @@ We have developed this application with the dual purpose of fostering personal m
 - [Credits](#credits)
 - [License](#license)
 - [Wireframe](#wireframe)
+- [Link](#link)
 
 
 ## Installation
@@ -124,13 +125,15 @@ Here is the layout of our database tables:
 15. The 14-28 Student Mini-Project assignment served as inspiration for setting up the server and routes to get us started.
 
 
+## Links
+
+Github Repository: https://github.com/mrobles-dev/Get-Them-GainsLinks 
+
+Heroku Deployment: https://on-track.herokuapp.com/homepageLinks 
+
+
 ## License
 
 MIT License
 
 Please refer to the LICENSE file in the repository for more information.
-
-
-## Features
-
-If your project has a lot of features, list them here.
