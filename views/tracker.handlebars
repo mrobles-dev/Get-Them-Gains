@@ -5,7 +5,7 @@
     <!-- Navbar Start -->
     <div class="bg-dark text-white fs-4 rounded-3" style="padding:10px;" id="insideNav">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div id="welcome"><b>Welcome</div>
+        <div id="welcome"  class="hiddenNav"><b>Welcome &nbsp;</b><span id="user-name"><b>{{user.name}}</b></span></div>
         <div>
           <a href="/tracker" style="text-decoration:none; padding: 0 10px 0 10px;"
             onclick="goalNavHandler()">Tracker</a>
@@ -61,7 +61,7 @@
 
 
 <script>
-  // "Source Beautiful Chart Animation with Chart.js Tutorial" - https://www.youtube.com/watch?v=fqARSwfsV9w 
+  // Charts were inspired by the tutorial and then edited with the Chart.js docs"Source Beautiful Chart Animation with Chart.js Tutorial" - https://www.youtube.com/watch?v=fqARSwfsV9w 
   let delayed;
 
   document.addEventListener('DOMContentLoaded', async () => {

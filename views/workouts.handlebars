@@ -5,7 +5,7 @@
     {{!-- <!-- Navbar Start --> --}}
     <div class="bg-dark text-white fs-4 rounded-3" style="padding:10px;" id="insideNav">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div id="welcome"><b>Welcome</div>
+        <div id="welcome" class="hiddenNav"><b>Welcome &nbsp;</b><span id="user-name"></span></div>
         <div>
           <a href="/tracker" style="text-decoration:none; padding: 0 10px 0 10px;" onclick="goalNavHandler()">Tracker</a>
           <a href="/workouts" style="text-decoration:none; padding: 0 10px 0 10px;">Workouts</a>
@@ -21,26 +21,34 @@
       <img src="/assets/WORKOUTS.png" style="margin: 30px 0 30px 0;" id="workoutsLogo" class="delayed-image" align="center">
     </div>
     <h3 style="text-align: center;">Save your workout notes</h3>
+   
+    {{!-- <h2> *page still currently being worked on </h2>
+    <img class="uc" src="https://cdn.pixabay.com/photo/2017/06/16/07/26/under-construction-2408061_960_720.png"
+      alt="under construction"> </img> --}}
     {{!-- <!-- Headings End --> --}}
 
     {{!-- <!-- Main Body Start --> --}}
 
 
-        {{#each workouts as |workout|}}
+        {{!-- go back to for each --}}
         <div class="row">
           <div class="col-4 list-container">
             <div class="card">
-              <ul class="list-group"> {{workout.text}} </ul>
+              <ul class="list-group"> Your Workouts</ul>
+              {{#each workouts as |workout|}}
+                <li>{{Workouts.title}}</li>
+                <li>{{Workouts.text}} </li>
+                {{/each}}
             </div>
           </div>
-          {{/each}}
           <div class="col-8">
-            <input class="note-title" placeholder="Note Title" maxlength="28" type="text" />
-            <textarea style="display:grid;" class="note-textarea" placeholder="Note Text"></textarea>
+            <input class="note-title" placeholder="Note Title" id ="note-title" maxlength="28" type="text" />
+            <textarea style="display:grid;" class="note-textarea" id= 'note-textarea' placeholder="Note Text"></textarea>
           </div>
         <div class="icons">
-          <i class="fas fa-save text-light save-note">save this</i>
-          <i class="fas fa-plus text-light new-note">new this</i>
+          <button class="fas fa-save text-light save-note">save this</button>
+          <button class="fas fa-plus text-light new-note">new this</button>
+         
         </div>
         </div>
       </div>

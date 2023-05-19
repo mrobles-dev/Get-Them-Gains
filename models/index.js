@@ -1,7 +1,7 @@
 const User = require('./User');
 
 const Sleep = require('./Sleep');
-const Weight= require('./weight');
+const Weight= require('./Weight');
 const Water= require('./Water');
 const Workouts= require('./Workouts');
 

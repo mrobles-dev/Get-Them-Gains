@@ -55,7 +55,7 @@ We have developed this application with the dual purpose of fostering personal m
 
 3. After inputting your data, you can click on 'tracker' which will then proceed to show you a progress bar, a chart for sleep, and another chart for water intake. 
 
-![progress]
+![progress](assets/progress.png)
 
 ## Wireframe
 

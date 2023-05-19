@@ -18,7 +18,7 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
-router.get("/workouts/:id", withAuth, async (req, res) => {
+router.get("/:id", withAuth, async (req, res) => {
   try {
     const workoutId = req.session.user_id;
     const workoutData = await Workouts.findAll({
