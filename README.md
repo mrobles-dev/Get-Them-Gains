@@ -129,7 +129,7 @@ Here is the layout of our database tables:
 
 Github Repository: https://github.com/mrobles-dev/Get-Them-GainsLinks 
 
-Heroku Deployment: https://on-track.herokuapp.com/homepageLinks 
+Heroku Deployment: https://on-track.herokuapp.com/  
 
 
 ## License
